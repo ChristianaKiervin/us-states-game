@@ -25,10 +25,7 @@ while len(correctGuessList) < 50:
 
     #Generate list of states not learned by user upon exit
     if guess == "Exit":
-        missedStates = []
-        for s in states:
-            if s not in correctGuessList:
-                missedStates.append(s)
+        missedStates = [state for state in states if state not in correctGuessList]
         newData = pandas.DataFrame(missedStates)
         newData.to_csv("states_to_learn.csv")
         break
